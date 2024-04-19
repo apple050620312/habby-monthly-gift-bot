@@ -134,7 +134,7 @@ async function presentIdModal(interaction) {
     .setCustomId('playerId')
     .setLabel(interaction.__('Enter player id'))
     .setMinLength(4)
-    .setMaxLength(8)
+    .setMaxLength(10)
     .setStyle(TextInputStyle.Short);
   
   let row = await new Promise((resolve, reject) => {
