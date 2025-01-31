@@ -42,7 +42,7 @@ bs.exec("CREATE TABLE IF NOT EXISTS generic_codes (code TEXT NOT NULL UNIQUE, ex
 bs.exec("CREATE TABLE IF NOT EXISTS players (discordid TEXT NOT NULL, playerid TEXT NOT NULL, code TEXT NOT NULL, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
 
 //delete logs older than 6 months to reduce db size
-bs.prepare(`DELETE FROM players WHERE date < ?`).run(time.getTime() - 15768000000);
+bs.prepare(`DELETE FROM players WHERE date < ?`).run(new Date().getTime() - 15768000000);
 bs.exec("VACUUM");
 
 if (fs.existsSync('codes.txt')) {
@@ -561,7 +561,7 @@ client.on("messageCreate", async message => {
       db.run(`DELETE FROM nitro_codes`, [], () => {});
       db.run(`DELETE FROM codes`, [], () => {});
       //delete logs older than 6 months to reduce db size
-      db.run(`DELETE FROM players WHERE date < ?`, [date.getTime() - 15768000000], () => {});
+      db.run(`DELETE FROM players WHERE date < ?`, [new Date().getTime() - 15768000000], () => {});
       db.run("VACUUM");
       break;
     case "backup":
