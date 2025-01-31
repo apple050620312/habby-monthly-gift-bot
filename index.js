@@ -41,6 +41,10 @@ bs.exec("CREATE TABLE IF NOT EXISTS nitro_codes (code TEXT NOT NULL UNIQUE ON CO
 bs.exec("CREATE TABLE IF NOT EXISTS generic_codes (code TEXT NOT NULL UNIQUE, expired BOOL DEFAULT FALSE)");
 bs.exec("CREATE TABLE IF NOT EXISTS players (discordid TEXT NOT NULL, playerid TEXT NOT NULL, code TEXT NOT NULL, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
 
+//delete logs older than 6 months to reduce db size
+bs.prepare(`DELETE FROM players WHERE date < ?`).run(date.getTime() - 15768000000);
+bs.exec("VACUUM");
+
 if (fs.existsSync('codes.txt')) {
   const stmt = bs.prepare('INSERT INTO codes (code) VALUES (?)');
   bs.transaction(() => {
@@ -556,6 +560,9 @@ client.on("messageCreate", async message => {
       await message.reply({content: "Clearing DB of used codes! Check /status", files: [new AttachmentBuilder('database.sqlite')]});
       db.run(`DELETE FROM nitro_codes`, [], () => {});
       db.run(`DELETE FROM codes`, [], () => {});
+      //delete logs older than 6 months to reduce db size
+      db.run(`DELETE FROM players WHERE date < ?`, [date.getTime() - 15768000000], () => {});
+      db.run("VACUUM");
       break;
     case "backup":
       await message.reply({content: "Here you go :)", files: [new AttachmentBuilder('database.sqlite')]});
