@@ -42,7 +42,7 @@ bs.exec("CREATE TABLE IF NOT EXISTS generic_codes (code TEXT NOT NULL UNIQUE, ex
 bs.exec("CREATE TABLE IF NOT EXISTS players (discordid TEXT NOT NULL, playerid TEXT NOT NULL, code TEXT NOT NULL, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
 
 //delete logs older than 6 months to reduce db size
-bs.prepare(`DELETE FROM players WHERE date < ?`).run(date.getTime() - 15768000000);
+bs.prepare(`DELETE FROM players WHERE date < ?`).run(time.getTime() - 15768000000);
 bs.exec("VACUUM");
 
 if (fs.existsSync('codes.txt')) {
