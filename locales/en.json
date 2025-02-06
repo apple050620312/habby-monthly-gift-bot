@@ -1,20 +1,20 @@
 {
-	"Enter player id": "Enter Player ID",
-	"What is your survivor.io player id": "What is your Survivor.io Player ID?",
-	"Invalid playerid `%s`. Please check again.": "Invalid Player ID `%s`. Please check again.",
-	"Checking...": "Checking...",
+	"enter_id": "Enter Player ID (Digits)",
+	"whats_your_id": "What's your in-game player ID?",
+	"invalid_id": "Invalid Player ID `%s`. Please check again.",
+	"checking": "Checking...",
 	
-	"Fetching captcha...": "Fetching captcha...",
-	"Failed getting captcha. Try again later.": "Failed getting captcha. Try again later.",
-	"Please enter the captcha below": "Please enter the captcha below",
-	"Solve captcha": "Solve captcha",
-	"What is the captcha solution": "What is the captcha solution",
-	"Checking captcha...": "Checking captcha...",
-	"Invalid captcha, try again": "Invalid captcha, try again.",
+	"fetching_captcha": "Fetching captcha...",
+	"get_captcha_fail": "Failed getting captcha. Try again later.",
+	"answer_captcha_below": "Please answer the captcha below",
+	"answer_captcha": "Answer captcha",
+	"whats_captcha_answer": "What is the captcha's answer",
+	"checking_captcha": "Checking captcha...",
+	"invalid_captcha": "Invalid captcha, please try again.",
 
-	"You cannot claim another code until %s": "You cannot claim another gift until %s",
-	"Sorry there are no more codes available!": "Sorry there are no more gifts available!",
-	"Something went wrong... Have you already received a reward this month?": "Something went wrong... Have you already received a gift this month?",
-	"A problem occured when trying to redeem your gift-code. Please try again later.": "A problem occured when trying to redeem your gift. Please try again later.",
-	"Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!": "Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!"
+	"cant_claim_until": "You can't claim the gift again until %s",
+	"no_more_gifts": "Sorry there are no more gifts available! (Please contact admin)",
+	"something_went_wrong": "Something went wrong... Did you already received a gift this month?",
+	"a_problem_occured": "A problem occured when trying to redeem your gift. Please try again later.",
+	"congratulations": "Congratulations! Your gift has been sent to your in-game mailbox. Go and check it out!"
 }

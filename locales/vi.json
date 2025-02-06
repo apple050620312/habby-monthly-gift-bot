@@ -1,20 +1,20 @@
 {
-	"Enter player id": "Nhập ID Tài Khoản",
-	"What is your survivor.io player id": "ID Người Chơi của bạn là gì?",
-	"Invalid playerid `%s`. Please check again.": "ID người chơi không hợp lệ`%s`. Vui lòng kiểm tra lại.",
-	"Checking...": "Đang Kiểm tra...",
+	"enter_id": "Nhập ID người chơi (Chữ số)",
+	"whats_your_id": "ID người chơi trong trò chơi của bạn là gì?",
+	"invalid_id": "ID người chơi không hợp lệ `%s`. Vui lòng kiểm tra lại.",
+	"checking": "Đang kiểm tra...",
 	
-	"Fetching captcha...": "Đang tải captcha...",
-	"Failed getting captcha. Try again later.": "Thất bại trong việc lấy captcha. Hãy thử lại sau.",
-	"Please enter the captcha below": "Vui lòng nhập captcha bên dưới",
-	"Solve captcha": "Điền captcha",
-	"What is the captcha solution": "giải pháp captcha là gì?",
-	"Checking captcha...": "Đang kiểm tra captcha...",
-	"Invalid captcha, try again": "captcha không hợp lệ, hãy thử lại.",
+	"fetching_captcha": "Đang tìm nạp hình ảnh xác thực...",
+	"get_captcha_fail": "Không nhận được hình ảnh xác thực. Hãy thử lại sau.",
+	"answer_captcha_below": "Vui lòng trả lời captcha bên dưới",
+	"answer_captcha": "Trả lời hình ảnh xác thực",
+	"whats_captcha_answer": "Câu trả lời của captcha là gì",
+	"checking_captcha": "Đang kiểm tra hình ảnh xác thực...",
+	"invalid_captcha": "Hình ảnh xác thực không hợp lệ, vui lòng thử lại.",
 
-	"You cannot claim another code until %s": "Bạn không thể nhận một code khác cho đến khi %s",
-	"Sorry there are no more codes available!": "Rất tiếc, hiện không còn mã code khả dụng!",
-	"Something went wrong... Have you already received a reward this month?": "Đã xảy ra lỗi... Bạn đã nhận phẩn thưởng trong tháng này?",
-	"A problem occured when trying to redeem your gift-code. Please try again later.": "Sự cố đã xảy ra khi đổi mã quà tặng của bạn. Vui lòng thử lại sau",
-	"Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!": "Chúc mừng bạn! Phần thưởng của bạn đã được gửi đến Hộp Thư trong trò chơi. Hãy vào game và kiểm tra Hộp Thư!"
+	"cant_claim_until": "Bạn không thể nhận lại quà tặng cho đến %s",
+	"no_more_gifts": "Rất tiếc không còn quà nữa! (Vui lòng liên hệ quản trị viên)",
+	"something_went_wrong": "Đã xảy ra lỗi... Bạn đã nhận được quà tháng này chưa?",
+	"a_problem_occured": "Đã xảy ra sự cố khi cố gắng đổi quà của bạn. Vui lòng thử lại sau.",
+	"congratulations": "Chúc mừng! Quà tặng của bạn đã được gửi tới hộp thư trong trò chơi. Đi và kiểm tra xem nó ra!"
 }

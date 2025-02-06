@@ -103,16 +103,16 @@ const db = new sqlite3.Database('database.sqlite');
 async function presentCaptcha(interaction, playerId) {
   let genRes = await axios.post(`https://${config.host}/api/v1/captcha/generate`).catch(() => {});
   if (!genRes || genRes.status != 200 || !genRes.data) {
-    return await interaction.editReply({ content: interaction.__('Failed getting captcha. Try again later.') });
+    return await interaction.editReply({ content: interaction.__('get_captcha_fail') });
   }
   if (genRes.data.code != 0 || !genRes.data.data || !genRes.data.data.captchaId) {
-    return await interaction.editReply({ content: interaction.__('Failed getting captcha. Try again later.') });
+    return await interaction.editReply({ content: interaction.__('get_captcha_fail') });
   }
 
   let captchaId = genRes.data.data.captchaId;
   let imageRes = await axios.get(`https://${config.host}/api/v1/captcha/image/${captchaId}`, { responseType: 'arraybuffer' }).catch(() => {});
   if (!imageRes || imageRes.status != 200 || !imageRes.data || !imageRes.data.length) {
-    return await interaction.editReply({ content: interaction.__('Failed getting captcha. Try again later.') });
+    return await interaction.editReply({ content: interaction.__('get_captcha_fail') });
   }
 
   let data = await sharp(imageRes.data).flatten({ background: { r: 255, g: 255, b: 255 } }).toFormat('png').toBuffer()
@@ -122,10 +122,10 @@ async function presentCaptcha(interaction, playerId) {
     .addComponents(
       new ButtonBuilder()
         .setCustomId(`captcha-${playerId}-${captchaId}`)
-        .setLabel(interaction.__('Solve captcha'))
+        .setLabel(interaction.__('answer_captcha'))
         .setStyle(ButtonStyle.Primary),
     );
-  return await interaction.editReply({ content: interaction.__('Please enter the captcha below'), files: [captcha], components: [enterButton] });
+  return await interaction.editReply({ content: interaction.__('answer_captcha_below'), files: [captcha], components: [enterButton] });
 }
 
 
@@ -133,10 +133,10 @@ async function presentCaptcha(interaction, playerId) {
 async function presentIdModal(interaction) {
   const modal = new ModalBuilder()
     .setCustomId('idModal')
-    .setTitle(interaction.__('Enter player id'));
+    .setTitle(interaction.__('enter_id'));
   const playerIdInput = new TextInputBuilder()
     .setCustomId('playerId')
-    .setLabel(interaction.__('Enter player id'))
+    .setLabel(interaction.__('enter_id'))
     .setMinLength(4)
     .setMaxLength(10)
     .setStyle(TextInputStyle.Short);
@@ -161,10 +161,10 @@ async function presentIdModal(interaction) {
 async function presentCaptchaModal(interaction) {
   const modal = new ModalBuilder()
     .setCustomId(interaction.customId)
-    .setTitle(interaction.__('Solve captcha'));
+    .setTitle(interaction.__('answer_captcha'));
   const captchaInput = new TextInputBuilder()
     .setCustomId('captcha')
-    .setLabel(interaction.__('What is the captcha solution'))
+    .setLabel(interaction.__('whats_captcha_answer'))
     .setMinLength(4)
     .setMaxLength(4)
     .setStyle(TextInputStyle.Short);
@@ -197,7 +197,7 @@ async function checkCanClaim(interaction, playerId) {
     if (claimDate > moment()
       // && !config.isDeveloper(interaction.user.id)
       ) {
-      await interaction.editReply({ content: interaction.__('You cannot claim another code until %s', `<t:${claimDate.unix()}:f> <t:${claimDate.unix()}:R>`), ephemeral: true });
+      await interaction.editReply({ content: interaction.__('cant_claim_until', `<t:${claimDate.unix()}:f> <t:${claimDate.unix()}:R>`), ephemeral: true });
       return false
     }
   }
@@ -262,28 +262,10 @@ client.on('interactionCreate', async interaction => {
     if (interaction.channel.isDMBased() && !config.isDeveloper(interaction.user.id)) {
       return await interaction.reply("NO DM!")
     }
-    if (interaction.commandName === 'about') {
-      let ephemeral = !interaction.guild.members.me.permissionsIn(interaction.channel).has([PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages], true);
-
-      return await interaction.reply({ content: `Coded by \`Reformed#1337\`
-Korean by \`Bee🐝#7132\` and \`신우#2544\`
-Vietnamese by \`Violet57#5009\`
-Dutch by \`vSolarian#5950\`
-French by \`Fukuda#9980\`
-Portuguese by \`Halt#2768\`
-Lithuanian by \`Supra#3918\`
-Swedish by \`Timmetott#2528\`
-Spanish by \`jmedelotti#6079\`
-German by \`Choooki#1065\`
-Ukrainian by \`PlayMe#1288\`
-`, ephemeral: ephemeral})
-    }
-
-
 
     if (interaction.commandName === 'status') {
       let before = new Date()
-      interaction.reply({ content: `Checking...`, ephemeral: false, fetchReply: true}).then (async (message) => {
+      interaction.reply({ content: `checking`, ephemeral: false, fetchReply: true}).then (async (message) => {
         let after = new Date()
         db.get(`SELECT
         (SELECT count() FROM codes where used=0) as codes_left,
@@ -291,7 +273,8 @@ Ukrainian by \`PlayMe#1288\`
         (SELECT count() FROM nitro_codes where used=0) as nitro_left,
         (SELECT count() FROM nitro_codes) as nitro_total
         `, [], (err, row) => {
-          interaction.editReply(`Real time total ${new Date() - before}ms | API ${message.createdTimestamp - interaction.createdTimestamp}ms | WS ${Math.round(client.ws.ping)}ms | DB ${new Date() - after}ms
+          interaction.editReply(`Developed by <@638290398665768961> (Reformed), Translated by <@523114942434639873> (sangege)
+Real time total ${new Date() - before}ms | API ${message.createdTimestamp - interaction.createdTimestamp}ms | WS ${Math.round(client.ws.ping)}ms | DB ${new Date() - after}ms
 Normal codes remaining: ${Math.round(row.codes_left / row.codes_total * 100)}% (${row.codes_left} / ${row.codes_total})
 Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% (${row.nitro_left} / ${row.nitro_total})
 `);
@@ -299,13 +282,9 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
       })
     }
 
-   
-
-
     if (!config.isDeveloper(interaction.user.id) && !interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
       return await interaction.reply({ content: `Sorry only admins :(`, ephemeral: true });
     }
-    
 
     if (interaction.commandName === 'post') {
       const channel = interaction.options.getChannel('channel');
@@ -340,7 +319,7 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
         })
       })
       if (!row || !row.code) {
-        return await interaction.editReply({ content: interaction.__('Sorry there are no more codes available!'), components: [], files: [] });
+        return await interaction.editReply({ content: interaction.__('no_more_gifts'), components: [], files: [] });
       }
 
       db.run("UPDATE codes SET used=TRUE WHERE code = ?", [row.code], () => {});
@@ -391,7 +370,7 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
 
   } else if (interaction.isModalSubmit()) {
     if (interaction.customId == 'idModal') {
-      await interaction.reply({ content: interaction.__('Checking...'), ephemeral: true });
+      await interaction.reply({ content: interaction.__('checking'), ephemeral: true });
 
       const playerId = interaction.fields.getTextInputValue('playerId');
       if (!/^\d+$/.test(playerId)) {
@@ -401,17 +380,17 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
 
       if (!await checkCanClaim(interaction, playerId)) { return }
 
-      await interaction.editReply({ content: interaction.__('Fetching captcha...'), ephemeral: true });
+      await interaction.editReply({ content: interaction.__('fetching_captcha'), ephemeral: true });
       return await presentCaptcha(interaction, playerId);
     }
 
     let [customId, playerId, captchaId] = interaction.customId.split('-')
     if (customId == 'captcha') {
-      await interaction.update({ content: interaction.__('Checking captcha...'), components: [], files: [] })
+      await interaction.update({ content: interaction.__('checking_captcha'), components: [], files: [] })
 
       const captcha = interaction.fields.getTextInputValue('captcha');
       if (!/^\d+$/.test(captcha) || captcha.length != 4) {
-        await interaction.editReply({ content: interaction.__('Invalid captcha, try again') });
+        await interaction.editReply({ content: interaction.__('invalid_captcha') });
         return await presentCaptcha(interaction, playerId)
       }
 
@@ -425,7 +404,7 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
         })
       })
       if (!row || !row.code) {
-        return await interaction.editReply({ content: interaction.__('Sorry there are no more codes available!') });
+        return await interaction.editReply({ content: interaction.__('no_more_gifts') });
       }
 
       // https://game.soulssvc.com/habbygame/mail/api/v1/captcha/generate
@@ -437,7 +416,7 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
         captcha: captcha,
       }).catch(() => {});
       if (!resp || !resp.data) {
-        return await interaction.editReply({ content: interaction.__('A problem occured when trying to redeem your gift-code. Please try again later.') });
+        return await interaction.editReply({ content: interaction.__('a_problem_occured') });
       }
       // print(resp.status, resp.data)
 
@@ -460,13 +439,14 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
         case 20402: //Already claimed code
         {
           print(`User has already claimed '${row.code}' or very unlikely bad code`)
+
           let channel = client.channels.cache.get(config.logChannel);
           if (channel) {
             channel.send({
-              content: `[FAIL] Discord: ${interaction.member} \`${interaction.user.username}#${interaction.user.discriminator} ${interaction.user.id}\` PlayerID: \`${playerId}\` Locale: \`${interaction.locale}\` - already claimed this month? <@523114942434639873>`
+              content: `[FAIL] Discord: ${interaction.member} \`${interaction.user.username}\` PlayerID: \`${playerId}\` Locale: \`${interaction.locale}\` - already claimed this month?`
             })
           }
-          return await interaction.editReply({ content: interaction.__('Something went wrong... Have you already received a reward this month?'), ephemeral: true });
+          return await interaction.editReply({ content: interaction.__('something_went_wrong'), ephemeral: true });
           // return await presentCaptcha(interaction, playerId);
         }
         case 20401: //Bad code
@@ -491,7 +471,7 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
           let channel = client.channels.cache.get(config.logChannel);
           if (channel) {
             channel.send({
-              content: `[FAIL] Bad player id entered - Discord: ${interaction.member} \`${interaction.user.username}#${interaction.user.discriminator} ${interaction.user.id}\` PlayerID: \`${playerId}\` Locale: \`${interaction.locale}\``,
+              content: `[FAIL] Bad player id entered - Discord: ${interaction.member} \`${interaction.user.username}\` PlayerID: \`${playerId}\` Locale: \`${interaction.locale}\``,
             })
           }
           return await interaction.editReply({ content: interaction.__('Invalid PlayerID \`%s\`. Please check again.', playerId), ephemeral: true });
@@ -504,15 +484,15 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
       db.run(`UPDATE ${table} SET used=TRUE WHERE code = ?`, [row.code], () => {});
       db.run(`INSERT INTO players(discordid, playerid, code, date) VALUES(?, ?, ?, ?)`, [interaction.user.id, playerId, row.code, moment().unix() * 1000], () => {});
 
-      print(`Redeem success Discord: ${interaction.user.username}#${interaction.user.discriminator} ${interaction.user.id} PlayerID: ${playerId} Code: ${row.code} Locale: ${interaction.locale}`)
+      print(`Redeem success Discord: ${interaction.user.username} PlayerID: ${playerId} Code: ${row.code} Locale: ${interaction.locale}`);
       let channel = client.channels.cache.get(config.logChannel);
       if (channel) {
         channel.send({
-          content: `[REDEEM] Discord: ${interaction.member} \`${interaction.user.username}#${interaction.user.discriminator}\` \`${interaction.user.id}\` PlayerID: \`${playerId}\` Code: \`${row.code}\` Locale: \`${interaction.locale}\``,
+          content: `[REDEEM] Discord: ${interaction.member} \`${interaction.user.username}\` PlayerID: \`${playerId}\` Code: \`${row.code}\` Locale: \`${interaction.locale}\``,
         })
       }
 
-      return await interaction.editReply({ content: interaction.__('Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!'), ephemeral: true });
+      return await interaction.editReply({ content: interaction.__('congratulations'), ephemeral: true });
     }
   }
 });

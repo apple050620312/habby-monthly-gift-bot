@@ -1,20 +1,20 @@
 {
-	"Enter player id": "Introduce el ID de jugador",
-	"What is your survivor.io player id": "Cuál es tu ID de jugador de Survivor.io",
-	"Invalid playerid `%s`. Please check again.": "ID inválido de jugador `%s`. Por favor, revíselo.",
-	"Checking...": "Verificando...",
+	"enter_id": "Ingrese la ID del jugador (dígitos)",
+	"whats_your_id": "¿Cuál es tu ID de jugador en el juego?",
+	"invalid_id": "ID de jugador no válido `%s`. Por favor verifique nuevamente.",
+	"checking": "De cheques...",
 	
-	"Fetching captcha...": "Obteniendo captcha...",
-	"Failed getting captcha. Try again later.": "Error obteniendo captcha. Inténtelo de nuevo más tarde",
-	"Please enter the captcha below": "Por favor introduce el captcha a continuación.",
-	"Solve captcha": "Resolver captcha",
-	"What is the captcha solution": "Cuál es la solución del captcha",
-	"Checking captcha...": "Verificando captcha...",
-	"Invalid captcha, try again": "Captcha inválido, inténtalo otra vez.",
+	"fetching_captcha": "Obteniendo captcha...",
+	"get_captcha_fail": "No se pudo obtener el captcha. Vuelve a intentarlo más tarde.",
+	"answer_captcha_below": "Por favor responda el captcha a continuación",
+	"answer_captcha": "Captcha de respuesta",
+	"whats_captcha_answer": "cual es la respuesta del captcha",
+	"checking_captcha": "Comprobando captcha...",
+	"invalid_captcha": "Captcha no válido, inténtalo de nuevo.",
 
-	"You cannot claim another code until %s": "No puedes reclamar otro regalo hasta el %s",
-	"Sorry there are no more codes available!": "Perdona no hay más regalos disponibles!",
-	"Something went wrong... Have you already received a reward this month?": "Algo fue mal... Ya has recibido el regalo del mes?",
-	"A problem occured when trying to redeem your gift-code. Please try again later.": "Un problema ocurrió cuando intentaste reclamar tu regalo. Por favor inténtalo más tarde.",
-	"Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!": "Enhorabuena! Tus recompensas han sido enviadas al correo del juego. Ve y compruébalo!"
+	"cant_claim_until": "No puedes reclamar el regalo nuevamente hasta %s",
+	"no_more_gifts": "¡Lo sentimos, no hay más regalos disponibles! (Por favor contacte al administrador)",
+	"something_went_wrong": "Algo salió mal... ¿Ya recibiste un regalo este mes?",
+	"a_problem_occured": "Ocurrió un problema al intentar canjear tu regalo. Inténtelo de nuevo más tarde.",
+	"congratulations": "¡Felicidades! Tu regalo ha sido enviado a tu buzón de correo del juego. ¡Ve y compruébalo!"
 }

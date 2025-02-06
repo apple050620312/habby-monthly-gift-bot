@@ -1,20 +1,20 @@
 {
-	"Enter player id": "Spieler ID eingeben",
-	"What is your survivor.io player id": "Wie lautet deine Survivor.io Spieler ID?",
-	"Invalid playerid `%s`. Please check again.": "Ungültige Spieler ID `%s`. Eingaben bitte erneut prüfen.",
-	"Checking...": "Prüfen...",
+	"enter_id": "Geben Sie die Spieler-ID (Ziffern) ein.",
+	"whats_your_id": "Wie lautet Ihre Spieler-ID im Spiel?",
+	"invalid_id": "Ungültige Spieler-ID „%s“. Bitte überprüfen Sie es noch einmal.",
+	"checking": "Überprüfung...",
 	
-	"Fetching captcha...": "Captcha laden...",
-	"Failed getting captcha. Try again later.": "Captcha konnte nicht geladen werden. Bitte versuche es zu einem späteren Zeitpunkt erneut.",
-	"Please enter the captcha below": "Bitte Captcha eingeben",
-	"Solve captcha": "Captcha lösen",
-	"What is the captcha solution": "Was ist die Lösung des Captcha?",
-	"Checking captcha...": "Captcha überprüfen...",
-	"Invalid captcha, try again": "Ungültiges Captcha. Bitte erneut eingeben. ",
+	"fetching_captcha": "Captcha wird abgerufen...",
+	"get_captcha_fail": "Captcha konnte nicht abgerufen werden. Versuchen Sie es später noch einmal.",
+	"answer_captcha_below": "Bitte beantworten Sie das Captcha unten",
+	"answer_captcha": "Captcha beantworten",
+	"whats_captcha_answer": "Wie lautet die Antwort des Captchas?",
+	"checking_captcha": "Captcha wird überprüft...",
+	"invalid_captcha": "Ungültiges Captcha, bitte versuchen Sie es erneut.",
 
-	"You cannot claim another code until %s": "Du kannst kein weiteres Geschenk abholen bis zum %s",
-	"Sorry there are no more codes available!": "Tut uns leid! Es sind keine weiteren Geschenke verfügbar.",
-	"Something went wrong... Have you already received a reward this month?": "Etwas ist schiefgelaufen... Hast du schon diesen Monat ein Geschenk erhalten?",
-	"A problem occured when trying to redeem your gift-code. Please try again later.": "Ein Problem ist aufgetreten während des Versuchs dein Geschenk einzulösen. Bitte später erneut probieren.",
-	"Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!": "Glückwunsch! Deine Belohnungen wurden an deinen In-Game Posteingang verschickt. Viel Spaß!"
+	"cant_claim_until": "Du kannst das Geschenk erst ab %s erneut anfordern",
+	"no_more_gifts": "Leider sind keine Geschenke mehr verfügbar! (Bitte kontaktieren Sie den Administrator)",
+	"something_went_wrong": "Etwas ist schiefgelaufen... Hast du diesen Monat bereits ein Geschenk erhalten?",
+	"a_problem_occured": "Beim Versuch, Ihr Geschenk einzulösen, ist ein Problem aufgetreten. Bitte versuchen Sie es später noch einmal.",
+	"congratulations": "Glückwunsch! Ihr Geschenk wurde an Ihr Postfach im Spiel gesendet. Schauen Sie doch mal vorbei!"
 }

@@ -1,0 +1,20 @@
+{
+	"enter_id": "Masukkan ID Pemain (Digit)",
+	"whats_your_id": "Apa ID pemain dalam game Anda?",
+	"invalid_id": "ID Pemain `%s` tidak valid. Silakan periksa lagi.",
+	"checking": "Memeriksa...",
+	
+	"fetching_captcha": "Mengambil captcha...",
+	"get_captcha_fail": "Gagal mendapatkan captcha. Coba lagi nanti.",
+	"answer_captcha_below": "Silakan jawab captcha di bawah ini",
+	"answer_captcha": "Jawab captcha",
+	"whats_captcha_answer": "Apa jawaban captchanya",
+	"checking_captcha": "Memeriksa captcha...",
+	"invalid_captcha": "Captcha tidak valid, harap coba lagi.",
+
+	"cant_claim_until": "Anda tidak dapat mengklaim hadiah itu lagi hingga %s",
+	"no_more_gifts": "Maaf, tidak ada lagi hadiah yang tersedia! (Silakan hubungi Admin)",
+	"something_went_wrong": "Ada yang tidak beres... Apakah Anda sudah menerima hadiah bulan ini?",
+	"a_problem_occured": "Terjadi masalah saat mencoba menukarkan hadiah Anda. Silakan coba lagi nanti.",
+	"congratulations": "Selamat! Hadiah Anda telah dikirim ke kotak surat dalam game Anda. Pergi dan periksa!"
+}

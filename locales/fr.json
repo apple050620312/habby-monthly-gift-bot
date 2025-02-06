@@ -1,20 +1,20 @@
 {
-	"Enter player id": "Entrez votre ID du joueur",
-	"What is your survivor.io player id": "Quel est votre ID du joueur sur Survivor.io",
-	"Invalid playerid `%s`. Please check again.": "ID du joueur invalide %s. Veuillez ressayer.",
-	"Checking...": "Vérification...",
+	"enter_id": "Entrez l'ID du joueur (chiffres)",
+	"whats_your_id": "Quel est votre identifiant de joueur dans le jeu ?",
+	"invalid_id": "ID de joueur `%s` invalide. Veuillez vérifier à nouveau.",
+	"checking": "Vérification...",
 	
-	"Fetching captcha...": "Récupération du captcha...",
-	"Failed getting captcha. Try again later.": "Nous n'avons pas pu récupérer le captcha. Veuillez réessayer plus tard.",
-	"Please enter the captcha below": "Veuillez entrer le captcha ci-dessous.",
-	"Solve captcha": "Résoudre le captcha",
-	"What is the captcha solution": "Quelle est la solution du captcha?",
-	"Checking captcha...": "Vérification du captcha...",
-	"Invalid captcha, try again": "Captcha invalide, veuillez ressayer.",
+	"fetching_captcha": "Récupération du captcha...",
+	"get_captcha_fail": "Échec de l'obtention du captcha. Réessayez plus tard.",
+	"answer_captcha_below": "Veuillez répondre au captcha ci-dessous",
+	"answer_captcha": "Répondre au captcha",
+	"whats_captcha_answer": "Quelle est la réponse du captcha",
+	"checking_captcha": "Vérification du captcha...",
+	"invalid_captcha": "Captcha invalide, veuillez réessayer.",
 
-	"You cannot claim another code until %s": "Vous ne pourrez pas récupérer une autre récompense avant %s",
-	"Sorry there are no more codes available!": "Désolé, il n'y a plus de récompenses disponible!",
-	"Something went wrong... Have you already received a reward this month?": "Nous avons rencontré un problème. Avez vous déjà récupéré une récompense ce mois-ci.",
-	"A problem occured when trying to redeem your gift-code. Please try again later.": "Nous avons rencontré un problème lors de la récupération de votre récompense. Veuillez ressayer plus tard.",
-	"Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!": "Félicitations! Vos récompenses ont été envoyées dans votre boîte aux lettres en jeu. Va la récupérer!"
+	"cant_claim_until": "Vous ne pourrez plus réclamer le cadeau avant le %s",
+	"no_more_gifts": "Désolé, il n'y a plus de cadeaux disponibles ! (Veuillez contacter l'administrateur)",
+	"something_went_wrong": "Quelque chose s'est mal passé... Avez-vous déjà reçu un cadeau ce mois-ci ?",
+	"a_problem_occured": "Un problème est survenu lors de la tentative d'utilisation de votre cadeau. Veuillez réessayer plus tard.",
+	"congratulations": "Tebrikler! Hediyeniz oyun içi posta kutunuza gönderildi. Gidin ve kontrol edin!"
 }

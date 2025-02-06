@@ -1,20 +1,20 @@
 {
-	"Enter player id": "플레이어 ID 입력",
-	"What is your survivor.io player id": "당신의 탕탕특공대 플레이어 ID는 무엇입니까?",
-	"Invalid playerid `%s`. Please check again.": "잘못된 플레이어 ID `%s`. 다시 확인 해주세요.",
-	"Checking...": "확인 중...",
+	"enter_id": "플레이어 ID(숫자)를 입력하세요.",
+	"whats_your_id": "당신의 게임 내 플레이어 ID는 무엇입니까?",
+	"invalid_id": "잘못된 플레이어 ID `%s`입니다. 다시 확인해 주세요.",
+	"checking": "확인 중...",
 	
-	"Fetching captcha...": "인증번호 가져오는 것...",
-	"Failed getting captcha. Try again later.": "인증번호를 가져오지 못했습니다. 나중에 다시 시도하십시오.",
-	"Please enter the captcha below": "아래에 인증번호를 입력하십시오.",
-	"Solve captcha": "인증번호 해결",
-	"What is the captcha solution": "인증번호가 무엇인가요",
-	"Checking captcha...": "인증번호 확인 중...",
-	"Invalid captcha, try again": "잘못된 보안문자입니다. 다시 시도하세요.",
+	"fetching_captcha": "보안문자를 가져오는 중...",
+	"get_captcha_fail": "보안문자를 가져오지 못했습니다. 나중에 다시 시도하세요.",
+	"answer_captcha_below": "아래 보안문자에 답해 주세요.",
+	"answer_captcha": "보안 문자에 답하세요",
+	"whats_captcha_answer": "보안 문자의 대답은 무엇입니까",
+	"checking_captcha": "보안문자 확인 중...",
+	"invalid_captcha": "보안문자가 잘못되었습니다. 다시 시도해 주세요.",
 
-	"You cannot claim another code until %s": "시간 까지 다른 코드를 요청할 수 없습니다 %s",
-	"Sorry there are no more codes available!": "죄송합니다. 더 이상 사용할 수 있는 코드가 없습니다!",
-	"Something went wrong... Have you already received a reward this month?": "문제가 발생했습니다... 이번 달에 이미 선물을 받으셨나요?",
-	"A problem occured when trying to redeem your gift-code. Please try again later.": "선물을 교환하는 중에 문제가 발생했습니다. 나중에 다시 시도 해주십시오.",
-	"Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!": "축하합니다! 보상이 게임 내 우편함으로 전송되었습니다. 가서 확인해 보세요!"
+	"cant_claim_until": "%s까지 선물을 다시 요청할 수 없습니다.",
+	"no_more_gifts": "죄송합니다. 더 이상 사용할 수 있는 선물이 없습니다! (관리자에게 문의해주세요)",
+	"something_went_wrong": "문제가 발생했습니다... 이번 달에 이미 선물을 받으셨나요?",
+	"a_problem_occured": "선물을 사용하는 중에 문제가 발생했습니다. 나중에 다시 시도해 주세요.",
+	"congratulations": "축하해요! 선물이 게임 내 우편함으로 전송되었습니다. 가서 확인해 보세요!"
 }

@@ -1,0 +1,20 @@
+{
+	"enter_id": "Inserisci l'ID giocatore (cifre)",
+	"whats_your_id": "Qual è il tuo ID giocatore nel gioco?",
+	"invalid_id": "ID giocatore `%s` non valido. Per favore controlla di nuovo.",
+	"checking": "Controllo...",
+	
+	"fetching_captcha": "Recupero captcha...",
+	"get_captcha_fail": "Impossibile ottenere il captcha. Riprova più tardi.",
+	"answer_captcha_below": "Per favore rispondi al captcha qui sotto",
+	"answer_captcha": "Rispondi al captcha",
+	"whats_captcha_answer": "Qual è la risposta del captcha",
+	"checking_captcha": "Controllo captcha...",
+	"invalid_captcha": "Captcha non valido, riprova.",
+
+	"cant_claim_until": "Non potrai richiedere nuovamente il regalo fino al %s",
+	"no_more_gifts": "Siamo spiacenti, non ci sono più regali disponibili! (Si prega di contattare l'amministratore)",
+	"something_went_wrong": "Qualcosa è andato storto... Hai già ricevuto un regalo questo mese?",
+	"a_problem_occured": "Si è verificato un problema durante il tentativo di riscattare il tuo regalo. Per favore riprova più tardi.",
+	"congratulations": "Congratulazioni! Il tuo regalo è stato inviato alla tua casella di posta nel gioco. Vai a dare un'occhiata!"
+}

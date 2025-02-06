@@ -1,0 +1,20 @@
+{
+	"enter_id": "プレイヤーID（数字）を入力してください",
+	"whats_your_id": "ゲーム内のプレイヤー ID は何ですか?",
+	"invalid_id": "プレイヤー ID `%s` が無効です。もう一度ご確認ください。",
+	"checking": "チェック中...",
+	
+	"fetching_captcha": "キャプチャを取得中...",
+	"get_captcha_fail": "キャプチャの取得に失敗しました。後でもう一度試してください。",
+	"answer_captcha_below": "以下のキャプチャに答えてください",
+	"answer_captcha": "回答キャプチャ",
+	"whats_captcha_answer": "キャプチャの答えは何ですか",
+	"checking_captcha": "キャプチャを確認しています...",
+	"invalid_captcha": "無効なキャプチャです。もう一度お試しください。",
+
+	"cant_claim_until": "%s までギフトを再度受け取ることはできません",
+	"no_more_gifts": "申し訳ありませんが、これ以上のプレゼントはありません。 (管理者に連絡してください)",
+	"something_went_wrong": "何か問題が発生しました...今月はもうギフトを受け取りましたか?",
+	"a_problem_occured": "ギフトを引き換えようとしたときに問題が発生しました。後でもう一度試してください。",
+	"congratulations": "おめでとう！ギフトはゲーム内のメールボックスに送信されました。行ってチェックしてみよう！"
+}

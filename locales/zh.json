@@ -1,20 +1,20 @@
 {
-	"Enter player id": "輸入遊戲ID",
-	"What is your survivor.io player id": "您的遊戲ID是什麼？",
-	"Invalid playerid `%s`. Please check again.": "無效的遊戲ID`%s`。請再檢查一次。",
-	"Checking...": "檢查中...",
+	"enter_id": "輸入玩家 ID（數字）",
+	"whats_your_id": "您的遊戲內玩家 ID 是什麼？",
+	"invalid_id": "無效的玩家 ID“%s”。請再次檢查。",
+	"checking": "檢查中...",
 	
-	"Fetching captcha...": "獲取驗證碼...",
-	"Failed getting captcha. Try again later.": "驗證碼獲取失敗，請稍後再試。",
-	"Please enter the captcha below": "請輸入下方的驗證碼",
-	"Solve captcha": "回答驗證碼",
-	"What is the captcha solution": "驗證碼的答案是什麼？",
-	"Checking captcha...": "驗證碼檢查中...",
-	"Invalid captcha, try again": "驗證碼錯誤，請再試一次。",
+	"fetching_captcha": "正在取得驗證碼...",
+	"get_captcha_fail": "取得驗證碼失敗。稍後再試。",
+	"answer_captcha_below": "請回答下面的驗證碼",
+	"answer_captcha": "回答驗證碼",
+	"whats_captcha_answer": "驗證碼的答案是什麼",
+	"checking_captcha": "正在檢查驗證碼...",
+	"invalid_captcha": "驗證碼無效，請重試。",
 
-	"You cannot claim another code until %s": "%s 之前都不能再領取獎勵",
-	"Sorry there are no more codes available!": "抱歉禮物已經發完了",
-	"Something went wrong... Have you already received a reward this month?": "出了一點問題...您這個月已經領取過獎勵了嗎？",
-	"A problem occured when trying to redeem your gift-code. Please try again later.": "兌換您的禮包時出現問題。請稍後再試。",
-	"Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!": "恭喜！您的獎勵已發送至您的遊戲內信箱。去看看吧！"
+	"cant_claim_until": "在 %s 之前您無法再次領取禮物",
+	"no_more_gifts": "抱歉，沒有更多禮物了！ （請聯絡管理員）",
+	"something_went_wrong": "出了點問題...這個月你已經收到禮物了嗎？",
+	"a_problem_occured": "嘗試兌換禮物時出現問題。請稍後重試。",
+	"congratulations": "恭喜！您的禮物已寄至您的遊戲內信箱。去看看吧！"
 }
