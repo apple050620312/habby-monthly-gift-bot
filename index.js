@@ -41,8 +41,8 @@ bs.exec("CREATE TABLE IF NOT EXISTS nitro_codes (code TEXT NOT NULL UNIQUE ON CO
 bs.exec("CREATE TABLE IF NOT EXISTS generic_codes (code TEXT NOT NULL UNIQUE, expired BOOL DEFAULT FALSE)");
 bs.exec("CREATE TABLE IF NOT EXISTS players (discordid TEXT NOT NULL, playerid TEXT NOT NULL, code TEXT NOT NULL, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
 
-//delete logs older than 6 months to reduce db size
-bs.prepare(`DELETE FROM players WHERE date < ?`).run(new Date().getTime() - 15768000000);
+// Delete logs older than 12 months to reduce DB size
+bs.prepare(`DELETE FROM players WHERE date < ?`).run(new Date().getTime() - 31536000000);
 bs.exec("VACUUM");
 
 if (fs.existsSync('codes.txt')) {
