@@ -245,7 +245,7 @@ client.on('interactionCreate', async interaction => {
 
     if (interaction.commandName === 'status') {
       let before = new Date()
-      interaction.reply({ content: `checking`, ephemeral: false, fetchReply: true}).then (async (message) => {
+      interaction.reply({ content: `Checking...`, ephemeral: false, fetchReply: true}).then (async (message) => {
         let after = new Date()
         db.get(`SELECT
         (SELECT count() FROM codes where used=0) as codes_left,
@@ -469,7 +469,7 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
 });
 
 client.on("messageCreate", async message => {
-  if (message.author.bot) return;
+  if (!config.isDeveloper(message.author.id)) return;
   if (message.channel.id !== config.adminChannel) return;
   // print(message)
 
