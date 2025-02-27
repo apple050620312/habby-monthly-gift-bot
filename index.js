@@ -33,17 +33,12 @@ function applyLang(target) {
 }
 applyLang({}) //test for logging errors at start
 
-
 let time = new Date()
 const bs = require('better-sqlite3')('database.sqlite');
 bs.exec("CREATE TABLE IF NOT EXISTS codes (code TEXT NOT NULL UNIQUE ON CONFLICT IGNORE, used BOOL DEFAULT FALSE)")
 bs.exec("CREATE TABLE IF NOT EXISTS nitro_codes (code TEXT NOT NULL UNIQUE ON CONFLICT IGNORE, used BOOL DEFAULT FALSE)");
 bs.exec("CREATE TABLE IF NOT EXISTS generic_codes (code TEXT NOT NULL UNIQUE, expired BOOL DEFAULT FALSE)");
 bs.exec("CREATE TABLE IF NOT EXISTS players (discordid TEXT NOT NULL, playerid TEXT NOT NULL, code TEXT NOT NULL, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
-
-// Delete logs older than 12 months to reduce DB size
-bs.prepare(`DELETE FROM players WHERE date < ?`).run(new Date().getTime() - 31536000000);
-bs.exec("VACUUM");
 
 if (fs.existsSync('codes.txt')) {
   const stmt = bs.prepare('INSERT INTO codes (code) VALUES (?)');
@@ -91,14 +86,8 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
 
 // bs.close()
 
-
-
-
-
-
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('database.sqlite');
-
 
 async function presentCaptcha(interaction, playerId) {
   let genRes = await axios.post(`https://${config.host}/api/v1/captcha/generate`).catch(() => {});
@@ -127,8 +116,6 @@ async function presentCaptcha(interaction, playerId) {
     );
   return await interaction.editReply({ content: interaction.__('answer_captcha_below'), files: [captcha], components: [enterButton] });
 }
-
-
 
 async function presentIdModal(interaction) {
   const modal = new ModalBuilder()
@@ -176,7 +163,6 @@ async function presentCaptchaModal(interaction) {
   }
 }
 
-
 async function checkCanClaim(interaction, playerId) {
   let row = await new Promise((resolve, reject) => {
     db.get('SELECT * FROM players WHERE discordId=? OR playerId=? ORDER BY date DESC LIMIT 1', [interaction.user.id, playerId], (err, row) => {
@@ -205,18 +191,13 @@ async function checkCanClaim(interaction, playerId) {
   return true
 }
 
-
-
-
-
-
-
 const client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMessages,
 	],
   partials: [
     Partials.Channel,
@@ -227,7 +208,6 @@ const client = new Client({
 client.on("ready", async () => {
   console.log(`Bot has started`); 
   client.user.setActivity(config.game, { type: ActivityType.Playing });
-
 
   let channel = client.channels.cache.get(config.logChannel);
   if (!channel) {
@@ -273,7 +253,7 @@ client.on('interactionCreate', async interaction => {
         (SELECT count() FROM nitro_codes where used=0) as nitro_left,
         (SELECT count() FROM nitro_codes) as nitro_total
         `, [], (err, row) => {
-          interaction.editReply(`Developed by <@638290398665768961> (Reformed), Translated by <@523114942434639873> (sangege)
+          interaction.editReply(`Developed by <@638290398665768961> (Reformed), Hosting by <@523114942434639873> (sangege)
 Real time total ${new Date() - before}ms | API ${message.createdTimestamp - interaction.createdTimestamp}ms | WS ${Math.round(client.ws.ping)}ms | DB ${new Date() - after}ms
 Normal codes remaining: ${Math.round(row.codes_left / row.codes_total * 100)}% (${row.codes_left} / ${row.codes_total})
 Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% (${row.nitro_left} / ${row.nitro_total})
@@ -326,7 +306,6 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
       return await interaction.editReply({ content: `Your code is \`${row.code}\`!`, components: [], files: [] });
     }
 
-
     if (interaction.commandName === 'lookup') {
       if (interaction.options.getSubcommand() === 'user') {
         let user = interaction.options.getMember('target');
@@ -353,7 +332,6 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
       }
     }
   
-  
   } else if (interaction.isButton()) {
     if (interaction.customId == 'getCode') {
       return await presentIdModal(interaction);
@@ -365,9 +343,6 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
       return await presentCaptchaModal(interaction)
     }
 
-
-
-
   } else if (interaction.isModalSubmit()) {
     if (interaction.customId == 'idModal') {
       await interaction.reply({ content: interaction.__('checking'), ephemeral: true });
@@ -376,7 +351,6 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
       if (!/^\d+$/.test(playerId)) {
         return await interaction.editReply({ content: interaction.__('Invalid PlayerID \`%s\`. Please check again.', playerId), ephemeral: true });
       }
-
 
       if (!await checkCanClaim(interaction, playerId)) { return }
 
@@ -393,7 +367,6 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
         await interaction.editReply({ content: interaction.__('invalid_captcha') });
         return await presentCaptcha(interaction, playerId)
       }
-
 
       if (!await checkCanClaim(interaction, playerId)) { return }
 
@@ -419,7 +392,6 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
         return await interaction.editReply({ content: interaction.__('a_problem_occured') });
       }
       // print(resp.status, resp.data)
-
 
 // 0 === e ? this.newArr[0][20] //Congratulations! Your rewards have been sent to your in-game Mailbox. Go and check it out!
 // 20001 === e ? this.newArr[0][37] //Redeem failed; information incorrect
@@ -480,7 +452,6 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
           return print("Unknown unhandled error code!", resp.data)
       }
 
-
       db.run(`UPDATE ${table} SET used=TRUE WHERE code = ?`, [row.code], () => {});
       db.run(`INSERT INTO players(discordid, playerid, code, date) VALUES(?, ?, ?, ?)`, [interaction.user.id, playerId, row.code, moment().unix() * 1000], () => {});
 
@@ -497,12 +468,10 @@ Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% ($
   }
 });
 
-
 client.on("messageCreate", async message => {
-  if (message.guild) return;
-  if (!config.isDeveloper(message.author.id)) return;
+  if (message.author.bot) return;
+  if (message.channel.id !== config.adminChannel) return;
   // print(message)
-
 
   switch (message.content) {
     case "help":
@@ -540,9 +509,6 @@ client.on("messageCreate", async message => {
       await message.reply({content: "Clearing DB of used codes! Check /status", files: [new AttachmentBuilder('database.sqlite')]});
       db.run(`DELETE FROM nitro_codes`, [], () => {});
       db.run(`DELETE FROM codes`, [], () => {});
-      //delete logs older than 6 months to reduce db size
-      db.run(`DELETE FROM players WHERE date < ?`, [new Date().getTime() - 15768000000], () => {});
-      db.run("VACUUM");
       break;
     case "backup":
       await message.reply({content: "Here you go :)", files: [new AttachmentBuilder('database.sqlite')]});

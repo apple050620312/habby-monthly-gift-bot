@@ -4,9 +4,6 @@ const config = require('./config.js')
 
 let commands = [
     new SlashCommandBuilder()
-        .setName('about')
-        .setDescription('Informations About Me'),
-    new SlashCommandBuilder()
         .setName('status')
         .setDescription('Checks bot status'),
     new SlashCommandBuilder()
