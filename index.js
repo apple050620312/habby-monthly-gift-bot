@@ -253,7 +253,7 @@ client.on('interactionCreate', async interaction => {
         (SELECT count() FROM nitro_codes where used=0) as nitro_left,
         (SELECT count() FROM nitro_codes) as nitro_total
         `, [], (err, row) => {
-          interaction.editReply(`Developed by <@638290398665768961> (Reformed), Hosting by <@523114942434639873> (sangege)
+          interaction.editReply(`Original Developed by Reformed(mayvary), Maintaining by <@523114942434639873> (sangege)
 Real time total ${new Date() - before}ms | API ${message.createdTimestamp - interaction.createdTimestamp}ms | WS ${Math.round(client.ws.ping)}ms | DB ${new Date() - after}ms
 Normal codes remaining: ${Math.round(row.codes_left / row.codes_total * 100)}% (${row.codes_left} / ${row.codes_total})
 Nitro codes remaining: ${Math.round(row.nitro_left / row.nitro_total * 100)}% (${row.nitro_left} / ${row.nitro_total})
@@ -531,7 +531,7 @@ process.on('uncaughtException', async function (err) {
   print(err);
 
   try {
-    let reformed = await client.users.createDM('638290398665768961');
+    let reformed = await client.users.createDM('523114942434639873');
     if (reformed) {
       reformed.send(`\`\`\`${err.name}\n${err.stack}\`\`\``)
     }
