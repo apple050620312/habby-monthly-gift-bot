@@ -1,7 +1,7 @@
 # Monthly Gift Bot for Habby Games
 
 ## About
-Original developed by **Reformed(mayvary)**, but he deleted his Discord and GitHub account.
+Original developed by **Reformed(mayvary)**, but he deleted his Discord and GitHub account.<br>
 Maintaining by **sangege**, contact me through [Discord](https://discord.com/users/523114942434639873) or create an issue.
 
 ## .env
