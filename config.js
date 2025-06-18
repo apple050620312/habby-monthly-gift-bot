@@ -2,10 +2,8 @@ require('dotenv').config()
 
 function isDeveloper(uid) {
     switch (uid) {
-        case '638290398665768961': //Reformed
         case '523114942434639873': //sangege
-        case '210191300966744064': //BarBot
-        case '109969814604218368': //Kamenwati
+        case '000000000000000000': //RandomAdmin
             return true;
         default:
             return false;
