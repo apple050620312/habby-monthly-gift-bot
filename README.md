@@ -1,8 +1,19 @@
 # Monthly Gift Bot for Habby Games
 
 ## About
-Original developed by **Reformed(mayvary)**, but he deleted his Discord and GitHub account.<br>
+Original developed by **Reformed(mayvary)**, but he deleted his Discord and GitHub account.
+
 Maintaining by **sangege**, contact me through [Discord](https://discord.com/users/523114942434639873) or create an issue.
+
+## Bot always said captcha failed / don't work?
+Update the code to newest version by downlaoding main branch.
+
+If after updated it still doesn't work, contact me to debug.
+
+## Bot can't do reset or backup by using the command?
+Setup admin channel in server and use admin commands there.
+
+Server supports 100MB file limit for bot to upload database.
 
 ## .env
 ```
