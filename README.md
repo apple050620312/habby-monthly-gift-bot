@@ -6,7 +6,7 @@ Original developed by **Reformed(mayvary)**, but he deleted his Discord and GitH
 Maintaining by **sangege**, contact me through [Discord](https://discord.com/users/523114942434639873) or create an issue.
 
 ## Bot always said captcha failed / don't work?
-Update the code to newest version by downlaoding main branch.
+Update the code to newest version by downloading main branch.
 
 If after updated it still doesn't work, contact me to debug.
 
