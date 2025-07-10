@@ -3,6 +3,8 @@
 ## About
 Original developed by **Reformed(mayvary)**, but he deleted his Discord and GitHub account.
 
+Currently using by Survivor.io, SOULS, Archero2, Wittle Defender
+
 Maintaining by **sangege**, contact me through [Discord](https://discord.com/users/523114942434639873) or create an issue.
 
 ## Bot always said captcha failed / don't work?
